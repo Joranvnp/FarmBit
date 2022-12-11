@@ -1,0 +1,5 @@
+{
+    "docify.style": "JavaDoc",
+    "docify.intelligentDetection": true,
+    "docify.programmingLanguage": "auto-detect"
+}
