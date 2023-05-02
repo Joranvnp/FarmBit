@@ -2,6 +2,7 @@ love.graphics.setDefaultFilter("nearest")
 io.stdout:setvbuf('no')
 
 local Inventory = require("Inventory")
+local Gui = require("Gui")
 
 TILESIZE = 8
 
@@ -98,6 +99,9 @@ Ground.Frames = {}
 Ground.Frames[GROUND_GRASS] = love.graphics.newQuad(40,48,8,8, imgTileSet:getWidth(), imgTileSet:getHeight())
 Ground.Frames[GROUND_SOIL] = love.graphics.newQuad(48,40,8,8, imgTileSet:getWidth(), imgTileSet:getHeight())
 
+-- Menu GUI
+local groupTest
+
 function AddAction(pPos)
     local a = {}
     a.Frames = {}
@@ -188,6 +192,10 @@ end
 
 function love.load()
     love.window.setMode((8 * MAPWIDTH)*4, (8 * MAPHEIGHT)*4)
+
+    width = love.graphics.getWidth()
+    height = love.graphics.getHeight()
+
     InitMap()
     InitPlants()
     AddAction(2)
@@ -198,6 +206,21 @@ function love.load()
     local font = love.graphics.newFont("font/Oxanium-ExtraBold.ttf",20)
     font:setFilter("nearest")
     love.graphics.setFont(font)
+
+    -- groupTest = Gui.newGroup()
+
+    -- panelTest1 = Gui.newPanel(10, 350, 300, 200)
+
+    -- panelTest1:setImage(love.graphics.newImage("images/Minifantasy_GuiPanelsAndSlotsOriginal.png"))
+
+    -- groupTest:addElement(panelTest1)
+
+
+    -- groupTest = Gui.newGroup()
+    -- panelTest1 = Gui.newPanel(10, 350, 300, 200)
+    -- panelTest1:setImage(love.graphics.newImage("images/Minifantasy_GuiPanelsAndSlotsOriginal.png"))
+    -- groupTest:addElement(panelTest1)
+
 end
 
 function GrowPlants(dt)
@@ -347,6 +370,13 @@ function love.draw()
         love.graphics.draw(imgTilePlants, Plants[item.id].Frames[Plants[item.id].steps + 1], (love.graphics.getWidth() / 4) - 20, (n-1)*10)
         love.graphics.print(item.quantity, (love.graphics.getWidth() / 4) - 12, ((n-1) * 10) + 4, 0, 0.3, 0.3)
     end
+
+
+    -- Menui GUI
+    
+    -- groupTest:draw()
+
+    -- love.graphics.present()
 
 end
 
